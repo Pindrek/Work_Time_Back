@@ -21,7 +21,7 @@ def home(request):
         return JsonResponse({"create": True})
 
     elif request.method == "PATCH":
-        print("Body:", request.body)
+        print(request.body)
         data = json.loads(request.body)
         progress_ = isodate.parse_duration(data.get("progress"))
         WorkSession.objects.filter(date=timezone.localdate()).update(
@@ -35,7 +35,6 @@ def home(request):
         data_view = []
         for s in sessions:
             data_view.append({
-                "id": s.id,
                 "progress_bar": s.progress_bar,
                 "date": s.date,
                 "progress": s.progress,
