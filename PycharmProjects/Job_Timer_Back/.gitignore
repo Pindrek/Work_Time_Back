@@ -1,0 +1,6 @@
+**migrations/
+**/__pycache__/
+*.db
+.venv/
+Job_Timer/.env
+*requirements.txt
