@@ -4,3 +4,4 @@
 .venv/
 Job_Timer/.env
 *requirements.txt
+.gitignore
