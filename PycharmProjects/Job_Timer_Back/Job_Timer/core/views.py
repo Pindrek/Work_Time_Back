@@ -11,6 +11,7 @@ from django.utils import timezone
 def home(request):
     if request.method == "POST":
         data = json.loads(request.body)
+        print("Post:", request.body)
         if WorkSession.objects.filter(date=timezone.localdate()).exists():
             return JsonResponse({"create": "exists"}, status=409)
         progress_ = isodate.parse_duration(data.get("progress"))
@@ -21,7 +22,7 @@ def home(request):
         return JsonResponse({"create": True})
 
     elif request.method == "PATCH":
-        print(request.body)
+        print("Patch: ", request.body)
         data = json.loads(request.body)
         progress_ = isodate.parse_duration(data.get("progress"))
         WorkSession.objects.filter(date=timezone.localdate()).update(
